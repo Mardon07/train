@@ -1,0 +1,83 @@
+<div class="container">
+  <form
+    class="form-wrapper"
+    [formGroup]="registrationForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h2>Registration</h2>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput #input placeholder="Email" />
+      <mat-error *ngIf="registrationForm.get('email')?.hasError('emailExists')">
+        Account with this email already exists
+      </mat-error>
+
+      <mat-error *ngIf="registrationForm.get('email')?.errors?.['required']">
+        Required
+      </mat-error>
+      <mat-error
+        *ngIf="registrationForm.get('email')?.errors?.['invalidEmail']"
+      >
+        Incorrect email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        [type]="hide() ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+
+      <mat-error *ngIf="registrationForm.get('password')?.errors?.['required']">
+        Required
+      </mat-error>
+      <mat-error
+        *ngIf="registrationForm.get('password')?.errors?.['minlength']"
+      >
+        Password must be at least 8 characters long
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Repeat your password</mat-label>
+      <input
+        matInput
+        formControlName="repeatedPassword"
+        [type]="hide() ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+
+      <mat-error *ngIf="registrationForm.hasError('passwordsDonotMatch')">
+        Passwords do not match
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      [disabled]="registrationForm.invalid || isLoading"
+      class="button-primary button"
+    >
+      {{ isLoading ? 'Signing Up...' : 'Register' }}
+    </button>
+    <p>Already have an account? <a routerLink="/signin">Sign In</a></p>
+  </form>
+</div>
