@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:train-app": "node dist/train-app/server/server.mjs",
+    "serve:ssr:train-app": "node dist/server/",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "prepare": "husky",
