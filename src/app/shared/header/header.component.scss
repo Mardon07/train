@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(7, 25, 37);
+  height: 40px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+.header__links {
+  display: flex;
+  gap: 20px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__logo__image {
+  max-width: 80px;
+}

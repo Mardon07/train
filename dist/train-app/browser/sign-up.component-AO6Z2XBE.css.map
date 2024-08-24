@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/auth/pages/sign-up/sign-up.component.scss"],
+  "sourcesContent": [".form-wrapper {\r\n  display: flex;\r\n  flex-direction: column;\r\n  max-width: 400px;\r\n  margin: auto;\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,aACE,QAAA,KACA,eAAA,OACA,UAAA,MAHF,OAIE",
+  "names": []
+}

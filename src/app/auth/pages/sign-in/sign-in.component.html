@@ -1,0 +1,50 @@
+<div class="container">
+  <form class="form-wrapper" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Sign in</h2>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput #input placeholder="Email" />
+
+      <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">
+        Required
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.errors?.['invalidEmail']">
+        Incorrect email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        [type]="hide() ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+
+      <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">
+        Required
+      </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="loginForm.hasError('UserIsNotFound')">
+      Incorrect email or password
+    </mat-error>
+
+    <button
+      [disabled]="loginForm.invalid || isLoading"
+      class="button-primary button"
+    >
+      {{ isLoading ? 'Signing In...' : 'Sign In' }}
+    </button>
+    <p>Don't have an account? <a routerLink="/signup">Sign Up</a></p>
+  </form>
+</div>

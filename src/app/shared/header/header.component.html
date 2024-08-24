@@ -1,0 +1,23 @@
+<header>
+  <a routerLink="/">
+    <div class="header__logo">
+      <img src="logo.jpeg" alt="Company logo" class="header__logo__image" />
+      Train-A
+    </div>
+  </a>
+  <div class="header__links">
+    @if (user === 'guest') {
+      <a routerLink="signin">Sign In</a>
+      <a routerLink="signup">Sign Up</a>
+    }
+    @if (user === 'user') {
+      <a routerLink="profile">Profile</a>
+      <a routerLink="orders">My orders</a>
+    }
+    @if (user === 'admin') {
+      <a routerLink="profile">Profile</a>
+      <a routerLink="orders">My orders</a>
+      <a routerLink="admin">Admin</a>
+    }
+  </div>
+</header>
